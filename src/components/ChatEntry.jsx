@@ -3,18 +3,36 @@ import PropTypes from 'prop-types';
 import TimeStamp from './TimeStamp';
 
 const ChatEntry = (props) => {
-  return (
-    <article className="chat-entry local">
-      <h2 className="entry-name">{props.sender}</h2>
-      <section className="entry-bubble">
-        <p>{props.body}</p>
-        <p className="entry-time">
-          <TimeStamp time={props.timeStamp} />
-        </p>
-        <button className="like">🤍</button>
-      </section>
-    </article>
-  );
+
+  if (props.sender === props.sender1) {
+    return (
+      <article className="chat-entry remote">
+        <h2 className="entry-name">{props.sender}</h2>
+        <section className="entry-bubble">
+          <p>{props.body}</p>
+          <p className="entry-time">
+            <TimeStamp time={props.timeStamp} />
+          </p>
+          <button className="like">🤍</button>
+        </section>
+      </article>
+    );
+  }
+
+  else {
+    return (
+      <article className="chat-entry local">
+        <h2 className="entry-name">{props.sender}</h2>
+        <section className="entry-bubble">
+          <p>{props.body}</p>
+          <p className="entry-time">
+            <TimeStamp time={props.timeStamp} />
+          </p>
+          <button className="like">🤍</button>
+        </section>
+      </article>
+    );
+  }
 };
 
 ChatEntry.propTypes = {
